@@ -30,9 +30,11 @@
     "sass-loader": "^6.0.6"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "preact": "^8.2.5",
     "preact-compat": "^3.17.0",
-    "preact-habitat": "^3.1.0"
+    "preact-habitat": "^3.1.0",
+    "ts-assertions": "^2.0.5"
   },
   "jest": {
     "verbose": true,
