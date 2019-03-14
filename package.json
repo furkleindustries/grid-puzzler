@@ -1,22 +1,22 @@
 {
-  "name": "grid-puzzler1",
+  "name": "grid-puzzler",
   "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.m.js",
-  "source": "components/hello-world/index.js",
+  "source": "components/GridPuzzler/index.js",
   "scripts": {
     "test": "NODE_ENV=test jest",
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
     "build": "preact build --no-prerender --clean --template src/index.ejs --service-worker false",
     "serve": "npm run build && preact serve",
     "dev": "preact watch --template src/index.ejs",
-    "dist": "microbundle --entry src/components/hello-world/index.js"
+    "dist": "microbundle --entry src/components/GridPuzzler/index.js"
   },
   "keywords": [],
-  "author": "Zouhir <zouhir@zouhir.org>",
-  "license": "MIT",
+  "author": "furkle",
+  "license": "none",
   "devDependencies": {
     "eslint": "^4.5.0",
     "identity-obj-proxy": "^3.0.0",
@@ -32,8 +32,8 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "preact": "^8.2.5",
-    "preact-compat": "^3.17.0",
     "preact-habitat": "^3.1.0",
+    "preact-material-components": "^1.5.7",
     "ts-assertions": "^2.0.5"
   },
   "jest": {

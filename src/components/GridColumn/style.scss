@@ -1,3 +1,5 @@
+@import '../../sass/vars.scss';
+
 .gridColumn {
-  height: 100%;
+  @include full-height();
 }

@@ -1,3 +1,16 @@
 .gridRowLabels {
-  
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 10%;
+  width: 10%;
+  height: 90%;
+}
+
+.gridRowLabel {
+  display: flex;
+  align-items: center;
 }

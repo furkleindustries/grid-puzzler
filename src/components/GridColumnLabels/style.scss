@@ -1,0 +1,20 @@
+@import '../../sass/vars.scss';
+
+.gridColumnLabels {
+  @include full-width();
+
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 10%;
+  padding-left: 10%;
+}
+
+.gridColumnLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}

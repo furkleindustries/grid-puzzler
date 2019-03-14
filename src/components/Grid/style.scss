@@ -1,5 +1,11 @@
+@import '../../sass/vars.scss';
+
 .grid {
-  display: flex;
-  width: 100%;
-  height: 100%;
+  @include full-width();
+  @include full-height();
+  box-sizing: border-box;
+}
+
+.grid * {
+  box-sizing: border-box;
 }
