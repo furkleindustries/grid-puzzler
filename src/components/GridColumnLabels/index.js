@@ -12,7 +12,7 @@ export const GridColumnLabels = ({ columns }) => (
         className={classnames(styles.gridColumnLabel, 'gridColumnLabel')}
         style={{ flexBasis: getInverseAsPercentage(columns.length) }}
       >
-        {column.label}
+        <strong>{column.label}</strong>
       </div>
     ))}
   </div>

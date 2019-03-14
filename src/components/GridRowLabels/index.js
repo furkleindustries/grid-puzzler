@@ -12,7 +12,7 @@ export const GridRowLabels = ({ rows }) => (
         className={classnames(styles.gridRowLabel, 'gridRowLabel')}
         style={{ flexBasis: getInverseAsPercentage(rows.length) }}
       >
-        {row.label}
+        <strong>{row.label}</strong>
       </div>
     ))}
   </div>

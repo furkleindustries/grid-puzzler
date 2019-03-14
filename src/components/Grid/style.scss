@@ -3,6 +3,7 @@
 .grid {
   @include full-width();
   @include full-height();
+
   box-sizing: border-box;
 }
 

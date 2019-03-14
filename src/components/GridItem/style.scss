@@ -6,6 +6,9 @@
   display: block;
   border: 1px solid black;
   background: white;
+
+  transition: background-color $color-transition-duration;
+
   cursor: pointer;
 
   &:global(.mdc-button) {
@@ -16,5 +19,9 @@
     &:global(:not(.mdc-ripple-upgraded):focus:before) {
       opacity: 0;
     }
+  }
+
+  &.active:not(:disabled) {
+    background-color: rgba(255, 0, 0, 0.5);
   }
 }
