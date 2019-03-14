@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Everything in the head element is for previewing only. -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Widget Template</title>
 
@@ -21,7 +22,17 @@
   </head>
 
   <body>
+    <!--
+      Make sure to copy the habitat host into the Twine. It *must* be in the
+      document when the bundle script is executed, otherwise it will fail
+      completely.
+    -->
     <div data-widget-host="habitat"></div>
+
+    <!--
+      The actual file source of bundle.js (probably at `build/bundle.js`) must
+      be copied into the Twine.
+    -->
     <script async src="bundle.js"></script>
   </body>
 </html>
