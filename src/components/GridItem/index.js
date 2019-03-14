@@ -21,6 +21,8 @@ export const GridItem = ({
     className={classnames(
       styles.gridItem,
       'gridItem',
+      /* Fix weird bug where ripple only works first time. */
+      'mdc-ripple-upgraded',
       { [styles.active]: active },
       { active },
     )}

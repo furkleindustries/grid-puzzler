@@ -13,15 +13,14 @@
 
   &:global(.mdc-button) {
     --mdc-theme-primary: red;
-
-    /* Don't let the ripple effect persist on focus, it'll be confusing. */
-    &:global(.mdc-ripple-upgraded--background-focused:before),
-    &:global(:not(.mdc-ripple-upgraded):focus:before) {
-      opacity: 0;
-    }
   }
 
   &.active:not(:disabled) {
     background-color: rgba(255, 0, 0, 0.5);
+  }
+
+  /* No focus highlighting. Too confusing for users. */
+  &:global(.mdc-button:not(.mdc-ripple-upgraded)):focus:before {
+    opacity: 0;
   }
 }
