@@ -41,15 +41,18 @@ export class Grid extends Component {
       <GridContent>
         {columns.map((column, x) => (
           <GridColumn width={columns.length}>
-            {rows.map((row, y) => (
-              <GridItem
-                active={gridState[x][y].active}
-                clickGridItem={this.clickGridItem}
-                gridHeight={rows.length}
-                x={x}
-                y={y}
-              />
-            ))}
+            {rows.map((row, y) => {
+              return (
+                <GridItem
+                  active={gridState[x][y].active}
+                  disabled={!this.gridItemHasPermissionToActivate(x, y)}
+                  clickGridItem={this.clickGridItem}
+                  gridHeight={rows.length}
+                  x={x}
+                  y={y}
+                />
+              );
+            })}
           </GridColumn>
         ))}
       </GridContent>
@@ -57,7 +60,7 @@ export class Grid extends Component {
   );
 
   clickGridItem = (x, y) => {
-    if (!this.gridItemHasPermissionToClick(x, y)) {
+    if (!this.gridItemHasPermissionToActivate(x, y)) {
       return;
     }
 
@@ -67,9 +70,28 @@ export class Grid extends Component {
     this.setState({ gridState });
   };
 
-  gridItemHasPermissionToClick = (x, y) => (
-    true
-  );
+  gridItemHasPermissionToActivate = (x, y) => {
+    const { gridState } = this.state;
+
+    if (this.gridItemIsActive(x, y)) {
+      return true;
+    }
+
+    for (let xIndex = 0; xIndex < gridState.length; xIndex += 1) {
+      const column = gridState[xIndex];
+      for (let yIndex = 0; yIndex < column.length; yIndex += 1) {
+        const item = column[yIndex];
+        if ((xIndex !== x || yIndex !== y) &&
+            (xIndex === x || yIndex === y) &&
+            item.active)
+        {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  };
 
   gridItemIsActive = (x, y) => this.state.gridState[x][y].active;
 };

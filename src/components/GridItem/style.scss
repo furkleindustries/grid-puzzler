@@ -12,7 +12,7 @@
   cursor: pointer;
 
   &:global(.mdc-button) {
-    --mdc-theme-primary: red;
+    --mdc-theme-primary: rgba(0, 0, 0, 0.5);
   }
 
   &.active:not(:disabled) {
@@ -22,5 +22,9 @@
   /* No focus highlighting. Too confusing for users. */
   &:global(.mdc-button:not(.mdc-ripple-upgraded)):focus:before {
     opacity: 0;
+  }
+
+  &:disabled {
+    opacity: 0.1;
   }
 }

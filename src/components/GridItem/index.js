@@ -14,10 +14,14 @@ export const GridItem = ({
   children,
   clickGridItem,
   gridHeight,
+  outlined = true,
+  ripple = true,
   x,
   y,
+  ...otherProps
 }) => (
   <Button
+    {...otherProps}
     className={classnames(
       styles.gridItem,
       'gridItem',
@@ -27,7 +31,8 @@ export const GridItem = ({
       { active },
     )}
     onClick={() => clickGridItem(x, y)}
-    ripple={true}
+    outlined={outlined}
+    ripple={ripple}
     style={{ height: getInverseAsPercentage(gridHeight) }}
   >
     <span>{`${x}.${y}`}</span>
