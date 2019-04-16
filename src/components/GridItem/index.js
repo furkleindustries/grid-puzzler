@@ -9,9 +9,12 @@ import { h } from 'preact';
 import styles from './style.scss';
 import 'preact-material-components/Button/style.css';
 
+const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
 export const GridItem = ({
   active,
   children,
+  className,
   clickGridItem,
   gridHeight,
   outlined = true,
@@ -25,6 +28,7 @@ export const GridItem = ({
     className={classnames(
       styles.gridItem,
       'gridItem',
+      className,
       /* Fix weird bug where ripple only works first time. */
       'mdc-ripple-upgraded',
       { [styles.active]: active },
@@ -35,7 +39,14 @@ export const GridItem = ({
     ripple={ripple}
     style={{ height: getInverseAsPercentage(gridHeight) }}
   >
-    <span>{`${x}.${y}`}</span>
+    <span>{`${(() => {
+      const letter = letters[x];
+      if (!letter) {
+        throw new Error('X coordinate was out of boudns in GridItem.render.');
+      }
+
+      return letter;
+    })()}${y + 1}`}</span>
     {children}
   </Button>
 );

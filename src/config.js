@@ -2,38 +2,50 @@ export default Object.freeze({
   grid: {
     columns: [
       {
-        label: 'Chet',
+        label: 'Sherim Goan dies',
       },
 
       {
-        label: 'Chad',
+        label: 'Battle of Hastings',
       },
 
       {
-        label: 'Chip',
+        label: 'Glyndwr\'s defeat',
       },
 
       {
-        label: 'Churt',
+        label: 'Fall of Constantinople',
       }
     ],
 
     rows: [
       {
-        label: 'Foo',
+        label: 'comet',
       },
 
       {
-        label: 'Bar',
+        label: 'lunar eclipse',
       },
 
       {
-        label: 'Bux',
+        label: 'supernova',
       },
 
       {
-        label: 'Quux',
+        label: 'three suns in the sky',
       },
     ],
+  },
+
+  solutions: [
+    'A3',
+    'B1',
+    'C4',
+    'D2',
+  ],
+
+  winCallback(grid) {
+    console.log(grid);
+    alert('You\'re winner! 🏆');
   },
 });

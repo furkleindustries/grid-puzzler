@@ -11,11 +11,15 @@ import styles from './style.scss';
 const GridPuzzler = ({
   columns = config.grid.columns,
   rows = config.grid.rows,
+  solutions = config.solutions,
+  winCallback = config.winCallback,
 }) => (
   <div className={classnames(styles.gridPuzzler, 'gridPuzzler')}>
     <Grid
       columns={columns}
       rows={rows}
+      solutions={solutions}
+      winCallback={winCallback}
     />
   </div>
 );

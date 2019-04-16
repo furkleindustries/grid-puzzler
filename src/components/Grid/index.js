@@ -14,6 +14,9 @@ import {
 import {
   GridRowLabels,
 } from '../GridRowLabels';
+import {
+  assertValid,
+} from 'ts-assertions';
 
 import {
   Component,
@@ -21,6 +24,8 @@ import {
 } from 'preact';
 
 import styles from './style.scss';
+
+const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 export class Grid extends Component {
   state = {
@@ -32,6 +37,7 @@ export class Grid extends Component {
   render = ({
     columns,
     rows,
+    solutions,
   }, { gridState }) => (
     <div className={classnames(styles.grid, 'grid')}>
       <GridColumnLabels columns={columns} />
@@ -41,25 +47,38 @@ export class Grid extends Component {
       <GridContent>
         {columns.map((column, x) => (
           <GridColumn width={columns.length}>
-            {rows.map((row, y) => {
-              return (
-                <GridItem
-                  active={gridState[x][y].active}
-                  disabled={!this.gridItemHasPermissionToActivate(x, y)}
-                  clickGridItem={this.clickGridItem}
-                  gridHeight={rows.length}
-                  x={x}
-                  y={y}
-                />
-              );
-            })}
+            {rows.map((row, y) => (
+              <GridItem
+                active={gridState[x][y].active}
+                clickGridItem={this.clickGridItem}
+                disabled={!this.gridItemHasPermissionToActivate(x, y)}
+                gridHeight={rows.length}
+                solutions={solutions}
+                x={x}
+                y={y}
+              />
+            ))}
           </GridColumn>
         ))}
       </GridContent>
     </div>
   );
 
+  componentDidMount = () => {
+    const {
+      solutions,
+      winCallback,
+    } = this.props;
+
+    const { gridState } = this.state;
+    if (this.hasValidSolution()) {
+      winCallback(gridState, solutions)
+    }
+  };
+
   clickGridItem = (x, y) => {
+    const { winCallback } = this.props;
+
     if (!this.gridItemHasPermissionToActivate(x, y)) {
       return;
     }
@@ -68,7 +87,28 @@ export class Grid extends Component {
     gridState[x][y].active = !gridState[x][y].active;
 
     this.setState({ gridState });
+    if (this.hasValidSolution(gridState)) {
+      winCallback(this.props.gridState, this.props.solutions);
+    }
   };
+
+  getIntegerIdFromAlphaId = (part) => assertValid(
+    letters.indexOf(String(part).toLowerCase()),
+    'Part argument to Grid.getIntegerFromAlphaId was not in band.',
+    (index) => index >= 0,
+  );
+
+  getCoordsFromId = (id) => id.split('').map((idPart) => (
+    /^\d$/.test(idPart) ?
+      Number(idPart) - 1 :
+      this.getIntegerIdFromAlphaId(idPart)
+  ));
+
+  getGridItemFromCoords = (x, y) => assertValid(
+    this.state.gridState &&
+      this.state.gridState[x] &&
+      this.state.gridState[x][y],
+  );
 
   gridItemHasPermissionToActivate = (x, y) => {
     const { gridState } = this.state;
@@ -93,5 +133,15 @@ export class Grid extends Component {
     return true;
   };
 
-  gridItemIsActive = (x, y) => this.state.gridState[x][y].active;
+  gridItemIsActive = (x, y) => this.getGridItemFromCoords(x, y).active;
+
+  hasValidSolution = () => (
+    this.props.solutions.sort().reduce((notFailed, solutionId) => (
+      notFailed && !console.log(solutionId, this.gridItemIsActive(
+        ...this.getCoordsFromId(solutionId)
+      )) && this.gridItemIsActive(
+        ...this.getCoordsFromId(solutionId)
+      )
+    ), true)
+  );
 };
