@@ -2,4 +2,7 @@ node_modules/
 build/
 dist/
 
+# Changed by library consumer
+local-content.js
+
 .vscode

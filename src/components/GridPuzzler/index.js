@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import config from '../../config';
+import config from '../../local-config';
 import {
   Grid,
 } from '../Grid';
