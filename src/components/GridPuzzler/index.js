@@ -1,15 +1,19 @@
 import classnames from 'classnames';
-import config from '../../local-config';
+import config from '../../../local-config';
 import {
   Grid,
 } from '../Grid';
+import {
+  Hints,
+} from '../Hints';
 
 import { h } from 'preact';
 
 import styles from './style.scss';
 
-const GridPuzzler = ({
+export const GridPuzzler = ({
   columns = config.grid.columns,
+  hints = config.hints,
   rows = config.grid.rows,
   solutions = config.solutions,
   winCallback = config.winCallback,
@@ -21,7 +25,7 @@ const GridPuzzler = ({
       solutions={solutions}
       winCallback={winCallback}
     />
+
+    <Hints hints={hints} />
   </div>
 );
-
-export default GridPuzzler;
