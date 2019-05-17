@@ -1,3 +1,11 @@
+@import '../../sass/vars.scss';
+
 .hints {
   display: block;
+  @include full-width();
+  height: 30%;
+  padding: 2% 2% 2% 4%;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-y: scroll;
 }

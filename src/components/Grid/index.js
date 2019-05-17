@@ -37,7 +37,6 @@ export class Grid extends Component {
   render = ({
     columns,
     rows,
-    solutions,
   }, { gridState }) => (
     <div className={classnames(styles.grid, 'grid')}>
       <GridColumnLabels columns={columns} />
@@ -53,7 +52,6 @@ export class Grid extends Component {
                 clickGridItem={this.clickGridItem}
                 disabled={!this.gridItemHasPermissionToActivate(x, y)}
                 gridHeight={rows.length}
-                solutions={solutions}
                 x={x}
                 y={y}
               />
@@ -137,9 +135,7 @@ export class Grid extends Component {
 
   hasValidSolution = () => (
     this.props.solutions.sort().reduce((notFailed, solutionId) => (
-      notFailed && !console.log(solutionId, this.gridItemIsActive(
-        ...this.getCoordsFromId(solutionId)
-      )) && this.gridItemIsActive(
+      notFailed && this.gridItemIsActive(
         ...this.getCoordsFromId(solutionId)
       )
     ), true)

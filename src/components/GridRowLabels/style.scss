@@ -1,3 +1,5 @@
+@import '../../sass/vars.scss';
+
 .gridRowLabels {
   display: flex;
   flex-direction: column;
@@ -5,9 +7,11 @@
   align-items: center;
   position: absolute;
   left: 0;
-  top: 10%;
+  top: 0;
   width: 10%;
-  height: 90%;
+  height: $grid-base-height;
+  padding-top: 7%;
+  padding-left: 5%;
 }
 
 .gridRowLabel {

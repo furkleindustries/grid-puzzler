@@ -2,4 +2,5 @@
 
 .gridColumn {
   @include full-height();
+  background: $white;
 }

@@ -8,7 +8,6 @@ import {
 /* Do not remove. This must be in scope for transpiled code to work. */
 import { h } from 'preact';
 
-debugger;
 habitatFactory(GridPuzzler).render({
   clean: true,
   selector: `[data-widget-host='grid-puzzler']`,
