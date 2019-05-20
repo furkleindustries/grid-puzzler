@@ -1,12 +1,20 @@
-@import '../../sass/vars.scss';
+@import '../../sass/vars';
 
 .grid {
   @include full-width();
-  @include full-height();
+  height: 60%;
+  overflow: hidden;
+  
+  transition: 
+    left $won-transition-duration,
+    top $won-transition-duration,
+    width $won-transition-duration,
+    height $won-transition-duration;
 
-  box-sizing: border-box;
-}
-
-.grid * {
-  box-sizing: border-box;
+  &.won {
+    left: 0;
+    top: 0;
+    @include full-width();
+    @include full-height();
+  }
 }

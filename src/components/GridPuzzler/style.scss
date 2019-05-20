@@ -1,6 +1,33 @@
-@import '../../sass/vars.scss';
+@import '../../sass/fonts';
+
+@import '../../sass/vars';
 
 .gridPuzzler {
 	@include full-width();
-	@include full-height();		
+	@include full-height();
+  padding: 2.5% 5%;
+	box-sizing: border-box;
+	transition: $won-transition-duration padding;
+
+	&.won {
+		padding: 0;
+	}
+
+	& * {
+		box-sizing: border-box;
+		font-family: 'Roboto', 'Helvetica', sans-serif;
+		font-size: 0.65rem;
+
+		@media screen and (min-width: $large-mobile-breakpoint) {
+			font-size: 0.8rem;
+		}
+
+		@media screen and (min-width: $small-tablet-breakpoint) {
+			font-size: 0.9rem;
+		}
+
+		@media screen and (min-width: $large-tablet-breakpoint) {
+			font-size: 1rem;
+		}
+	}
 }

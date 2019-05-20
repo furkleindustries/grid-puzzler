@@ -2,51 +2,70 @@ import classnames from 'classnames';
 import {
   getInverseAsPercentage,
 } from '../../functions/getInverseAsPercentage';
-import Button from 'preact-material-components/esm/Button';
+import {
+  letters,
+} from '../../letters';
+import {
+  assertValid,
+} from 'ts-assertions';
 
 import { h } from 'preact';
 
 import styles from './style.scss';
-import 'preact-material-components/Button/style.css';
-
-const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 export const GridItem = ({
-  active,
   children,
   className,
-  clickGridItem,
+  getRandomGridItemExplodeValue,
+  green,
+  greenForWin,
   gridHeight,
-  outlined = true,
-  ripple = true,
+  red,
+  redForWin,
+  won,
   x,
   y,
   ...otherProps
 }) => (
-  <Button
+  <div
     {...otherProps}
     className={classnames(
       styles.gridItem,
       'gridItem',
       className,
-      /* Fix weird bug where ripple only works first time. */
-      'mdc-ripple-upgraded',
-      { [styles.active]: active },
-      { active },
-    )}
-    onClick={() => clickGridItem(x, y)}
-    outlined={outlined}
-    ripple={ripple}
-    style={{ height: getInverseAsPercentage(gridHeight) }}
-  >
-    <span>{`${(() => {
-      const letter = letters[x];
-      if (!letter) {
-        throw new Error('X coordinate was out of boudns in GridItem.render.');
-      }
+      (() => {
+        if (greenForWin) {
+          return styles.green;
+        } else if (redForWin) {
+          return styles.red;
+        } else if (green && red) {
+          return styles.yellow;
+        } else if (green) {
+          return styles.green;
+        } else if (red) {
+          return styles.red;
+        }
 
-      return letter;
-    })()}${y + 1}`}</span>
+        return null;
+      })(),
+      { [styles.won]: won },
+    )}
+    style={{
+      height: getInverseAsPercentage(gridHeight),
+      transform: (
+        `translate(${
+          won ?
+            `${getRandomGridItemExplodeValue()}px, ` +
+              `${getRandomGridItemExplodeValue()}px` :
+            '0px, 0px'
+        })`
+      ),
+    }}
+  >
+    <span>{`${assertValid(
+      letters[x],
+      'X coordinate was out of boudns in GridItem.render.',
+    )}${y + 1}`}</span>
     {children}
-  </Button>
+  </div>
 );

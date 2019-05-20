@@ -7,15 +7,27 @@ import { h } from 'preact';
 
 import styles from './style.scss';
 
-export const Hints = ({ hints }) => (
-  <ul className={classnames(styles.hints, 'hints')}>
+export const Hints = ({
+  clickHint,
+  hints,
+  hintState,
+  won,
+}) => (
+  <ul className={classnames(
+    styles.hints,
+    'hints',
+    { [styles.won]: won },
+  )}>
     {hints.map(({
       identifier,
       ...hint,
     }, index) => (
       <Hint
         {...hint}
-        identifier={identifier || index}
+        active={hintState[index].active}
+        clickHint={clickHint}
+        identifier={index}
+        won={won}
       />
     ))}
   </ul>

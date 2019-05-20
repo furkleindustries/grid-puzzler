@@ -10,7 +10,7 @@ export default (config, env, helpers) => {
     './index.js',
   ];
 
-  if (process.env.window) {
+  if (process.env.window || !env.production) {
     config.output.library = 'GridPuzzler';
   }
 

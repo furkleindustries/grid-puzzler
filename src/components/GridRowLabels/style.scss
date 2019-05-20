@@ -1,16 +1,24 @@
+@import '../../sass/vars';
+
 .gridRowLabels {
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
   position: absolute;
-  left: 0;
-  top: 10%;
-  width: 10%;
-  height: 90%;
+  left: 1.25%;
+  top: 9.25%;
+  width: 20%;
+  height: 45.5%;
+  transition: opacity $won-transition-duration;
+
+  &.won {
+    opacity: 0;
+  }
 }
 
 .gridRowLabel {
   display: flex;
   align-items: center;
+  text-align: center;
 }

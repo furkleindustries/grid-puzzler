@@ -1,15 +1,19 @@
-@import '../../sass/vars.scss';
+@import '../../sass/vars';
 
 .gridColumnLabels {
-  @include full-width();
-
   display: flex;
   align-items: center;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 2%;
+  width: 92.5%;
   height: 10%;
-  padding-left: 10%;
+  padding-left: 22%;
+  transition: opacity $won-transition-duration;
+
+  &.won {
+    opacity: 0;
+  }
 }
 
 .gridColumnLabel {

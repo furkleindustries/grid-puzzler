@@ -1,6 +1,1 @@
-export function render() {
-  console.log('wow!');
-  console.log('wow!');
-  console.log('wow!');
-  require('./eagerIndex');
-}
+export const render = () => require('./eagerIndex');

@@ -5,14 +5,21 @@ import {
 
 import styles from './style.scss';
 
-export const GridColumnLabels = ({ columns }) => (
-  <div className={classnames(styles.gridColumnLabels, 'gridColumnLabels')}>
-    {columns.map((column) => (
+export const GridColumnLabels = ({
+  columns,
+  won,
+}) => (
+  <div className={classnames(
+    styles.gridColumnLabels,
+    'gridColumnLabels',
+    { [styles.won]: won },
+  )}>
+    {columns.map(({ label }) => (
       <div
         className={classnames(styles.gridColumnLabel, 'gridColumnLabel')}
         style={{ flexBasis: getInverseAsPercentage(columns.length) }}
       >
-        <strong>{column.label}</strong>
+        <strong>{label}</strong>
       </div>
     ))}
   </div>

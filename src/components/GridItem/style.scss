@@ -1,30 +1,36 @@
-@import '../../sass/vars.scss';
+@import '../../sass/vars';
 
 .gridItem {
   @include full-width();
 
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid black;
   background: white;
 
   transition: background-color $color-transition-duration;
 
-  cursor: pointer;
-
-  &:global(.mdc-button) {
-    --mdc-theme-primary: rgba(0, 0, 0, 0.5);
-  }
-
-  &.active:not(:disabled) {
+  &.red {
     background-color: rgba(255, 0, 0, 0.5);
   }
 
-  /* No focus highlighting. Too confusing for users. */
-  &:global(.mdc-button:not(.mdc-ripple-upgraded)):focus:before {
-    opacity: 0;
+  &.green {
+    background-color: rgba(0, 255, 0, 0.5);
   }
 
-  &:disabled {
-    opacity: 0.1;
+  &.yellow {
+    background-color: rgba(255, 255, 0, 0.5);
+  }
+
+  &.won {
+    transition:
+      background-color
+        $won-transition-duration,
+        
+      transform
+        $won-transition-duration * 2
+        ease-in
+        $won-transition-duration * 1.5;
   }
 }

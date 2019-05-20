@@ -1,10 +1,22 @@
-@import '../../sass/vars.scss';
+@import '../../sass/vars';
 
 .gridContent {
   display: flex;
   position: relative;
-  left: 10%;
-  top: 10%;
-  width: 90%;
-  height: 90%;
+  left: 20%;
+  top: 12.5%;
+  width: 80%;
+  height: 80%;
+  transition:
+    left $won-transition-duration,
+    top $won-transition-duration,
+    width $won-transition-duration,
+    height $won-transition-duration;
+
+  &.won {
+    left: 0;
+    top: 0;
+    @include full-width();
+    @include full-height();
+  }
 }
