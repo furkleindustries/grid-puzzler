@@ -7,10 +7,10 @@
 	@include full-height();
   padding: 2.5% 5%;
 	box-sizing: border-box;
-	transition: $won-transition-duration padding;
 
 	&.won {
 		padding: 0;
+		transition: $won-transition-duration padding;
 	}
 
 	& * {

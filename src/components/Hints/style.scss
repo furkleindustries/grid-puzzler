@@ -1,26 +1,16 @@
 @import '../../sass/vars';
 
 .hints {
-  height: initial;
+  max-height: initial;
   display: block;
   padding: 0;
   margin: 0;
-  transition: opacity $won-transition-duration;
+  transition:
+    opacity $won-transition-duration
+    max-height 0.01s linear $won-transition-duration;
 
   &.won {
     opacity: 0;
-    animation: knockout $won-transition-duration;
-  }
-
-  @keyframes knockout {
-    0% {
-      height: initial;
-    }
-    99% {
-      height: initial;
-    }
-    100% {
-      height: 0;
-    }
+    max-height: 0;
   }
 }

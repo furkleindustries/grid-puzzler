@@ -4,37 +4,37 @@ export default Object.freeze({
   grid: {
     columns: [
       {
-        label: `Andrew Martin`,
+        label: `Emperor Constantine X dies`,
       },
 
       {
-        label: `Anna Thomas`,
+        label: `Battle of Hastings`,
       },
 
       {
-        label: `William Morgan`,
+        label: `Glyndwr's defeat`,
       },
 
       {
-        label: `Owen Collins`,
+        label: `Fall of Constantinople`,
       }
     ],
 
     rows: [
       {
-        label: `mass wiretapping`,
+        label: `comet`,
       },
 
       {
-        label: `Freemasonry`,
+        label: `lunar eclipse`,
       },
 
       {
-        label: `${REDACTED}`,
+        label: `supernova`,
       },
 
       {
-        label: `nuclear power inspections`,
+        label: `three suns in the sky`,
       },
     ],
   },
@@ -45,63 +45,55 @@ export default Object.freeze({
    * runtime. No changes are made to strings.
    */
   solutions: [
+    1,
     2,
+    3,
     4,
-    5,
-    6,
   ],
 
   greenOnWin: [
-    `D3`,
+    `A3`,
     `C4`,
+    `D2`,
   ],
 
   redOnWin: [
-    `C3`,
+    `A2`,
+    `A4`,
+    `D4`,
   ],
 
   hints: [
     {
-      content: `No one whose last name begins with "M" was involved in either nuclear power inspections or ${REDACTED}.`,
+      content: `Glyndwr's defeat was not marked by a comet.`,
       green: [],
       red: [
-        `A3`,
-        `A4`,
+        `C1`,
+      ],
+    },
+
+    {
+      content: `The supernova occurred during either the Battle of Hastings or the fall of a city.`,
+      green: [],
+      red: [
         `C3`,
-        `C4`,
+        `D3`,
       ],
     },
 
     {
-      content: `Anna and the person who inspected nuclear power plants both lived in Denver.`,
+      content: `The lunar eclipse did not occur during Glyndwr's defeat.`,
       green: [],
       red: [
-        `B4`,
+        `C2`,
       ],
     },
 
     {
-      content: `Andrew Martin was not looking into Freemasonry when he disappeared near Carbon River.`,
-      green: [],
-      red: [
-        `A2`,
-      ],
-    },
-
-    {
-      content: `Plane tickets to Aruba were found at the home of the person who was looking into nuclear power inspections, but that person was not Owen Collins.`,
-      green: [],
-      red: [
-        `D4`,
-      ],
-    },
-
-    {
-      content: `Anna Thomas received multiple restraining orders from Bellecom for repeatedly phoning call center staff.`,
+      content: `The Battle of Hastings was marked by a comet.`,
       green: [
         `B1`,
       ],
-
       red: [
         `A1`,
         `B2`,
@@ -113,18 +105,34 @@ export default Object.freeze({
     },
 
     {
-      content: `Family and friends said Andrew Martin had developed an irrational fixation on Freemasonry leading up to his disappearance.`,
+      content: `The passing of Halley's comet has marked every fall of a European empire.`,
       green: [
-        `A2`,
+        `D1`,
       ],
 
       red: [
         `A1`,
-        `A3`,
-        `A4`,
-        `B2`,
-        `C2`,
+        `B1`,
+        `C1`,
         `D2`,
+        `D3`,
+        `D4`,
+      ],
+    },
+
+    {
+      content: `Constantine IX died in the year three suns appeared in the sky.`,
+      green: [
+        `A4`,
+      ],
+
+      red: [
+        `A1`,
+        `A2`,
+        `A3`,
+        `B4`,
+        `C4`,
+        `D4`,
       ],
     },
   ],
